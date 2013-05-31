@@ -1,3 +1,3 @@
-from .configurable import Config
-from .configurable import ConfigManager
-from .configurable import Location
+from .confypy import Config
+from .confypy import ConfigManager
+from .confypy import Location
