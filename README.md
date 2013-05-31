@@ -2,6 +2,30 @@
 ## Simple Configuration Loading and Management
 
 
+## Usage
+
+Once a config is configured with locations, it's values are accessed through
+the `data` attribute. Key or Attribute access is valid:
+
+```python
+from confypy import Config
+from confypy import Location
+
+config = Config()
+config.locations = [Location.from_env_keys(['FOO', 'BAR', 'BAZ'])]
+
+print(config.data.FOO)
+print(config.data.BAR)
+print(config.data.BAZ)
+
+# OR
+
+print(config.data['FOO'])
+print(config.data['BAR'])
+print(config.data['BAZ'])
+
+```
+
 ## Built-In Parsers
 By *built-in*, we mean confypy will automatically check for common
 config parsers of the following types:
@@ -35,9 +59,7 @@ Location.from_path('/data/foo', parser=json.loads)
 ```
 
 And this too:
-* Note that the imported 'json' here
-is just a reference to the json.loads
-callable *
+*Note that the imported 'json' here is just a reference to the json.loads callable*
 
 ```python
 import json
