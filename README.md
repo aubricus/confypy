@@ -126,10 +126,11 @@ from confypy import Location
 
 config = Config(chain=True)
 config.locations = [
-    Location.from_env_path('TEST_SETTINGS'),       # 4
-    Location.from_path('/data/foo.json'),          # 3 ^
-    Location.from_path('/data/foo.yaml'),          # 2 ^
-    Location.from_env_keys(['FOO', 'BAR', 'BAZ'])  # 1 ^
+    Location.from_env_path('TEST_SETTINGS'),       # 5
+    Location.from_path('/data/foo.json'),          # 4 ^
+    Location.from_path('/data/foo.yaml'),          # 3 ^
+    Location.from_env_keys(['FOO', 'BAR', 'BAZ']), # 2 ^
+    Location.from_python('path.to.my.module')      # 1 ^
 ]
 ```
 
