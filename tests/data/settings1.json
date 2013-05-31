@@ -1,0 +1,7 @@
+{
+    "name": "Lucy",
+    "occupation": "Dog",
+    "Sound": "Woof",
+    "foo.bar.baz": {"name": "ollie"},
+    "extra1": 1
+}
