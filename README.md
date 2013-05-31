@@ -1,6 +1,7 @@
 # confypy
 ## Simple Configuration Loading and Management
 
+
 ## Built-In Parsers
 By *built-in*, we mean confypy will automatically check for common
 config parsers of the following types:
@@ -73,6 +74,26 @@ def parser_for_ext(ext):
 
     raise ParserNotFound(ext)
 ```
+
+
+## Defaults
+
+Each config supports a set of defaults provided at creation time.
+
+```python
+from confypy import Config
+from confypy import Location
+
+
+defaults = {'foo':1, 'bar':2, 'baz':3}
+config = Config(defaults=defaults)
+```
+
+If no locations are present, or if none of the locations, when loaded, return
+any valid data, the defaults will be when looking up values.
+
+When locations are chained, the defaults represent the last location for a
+lookup before an error is raised.
 
 
 ## Examples
