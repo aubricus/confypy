@@ -1,4 +1,7 @@
 # confypy
+
+Python **2.6**, **2.7**, **3.2** and **3.3** compatible
+
 ## Simple Configuration Loading and Management
 
 
