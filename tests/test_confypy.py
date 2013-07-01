@@ -25,6 +25,13 @@ def test_config_init_yaml_defaults():
     assert config.data.foo == 'bar'
 
 
+def test_config_defaults_get():
+    defaults = {'foo': 'bar'}
+    config = Config(defaults=defaults)
+    assert config.data.get('foo', 22) == 'bar'
+    assert config.data.get('bar', 22) == 22
+
+
 def test_locations_env_keys():
     os.environ['FOO'] = '1'
     os.environ['BAR'] = '2'

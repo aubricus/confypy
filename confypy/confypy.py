@@ -59,6 +59,12 @@ class ConfigData(object):
     def __init__(self, maps):
         self.maps = maps
 
+    def get(self, key, default=None):
+        try:
+            return self.value_for_key(key)
+        except KeyError:
+            return default
+
     def __getattr__(self, key):
         try:
             return self.value_for_key(key)
