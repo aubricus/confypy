@@ -47,7 +47,10 @@ def parser_from_parser_or_filename(parser, filename):
     if isinstance(parser, string_type):
         return parser_for_ext(parser)
 
-    return parser_for_filename(filename)
+    if filename:
+        return parser_for_filename(filename)
+
+    return None
 
 
 def parser_for_filename(filename):

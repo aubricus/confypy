@@ -26,7 +26,7 @@ packages = [
 
 setup(
     name='confypy',
-    version='0.2.0',
+    version='0.2.1',
     description='Configuration Loading Utility',
     long_description=readme,
     author='Adam Venturella',

@@ -10,7 +10,6 @@ except ImportError:
 
 
 def load_locations(locations):
-
     for each in locations:
         try:
             data = each.load()
