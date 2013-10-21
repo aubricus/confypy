@@ -8,6 +8,39 @@ from .loaders import load_env_python
 from .parsers import parser_from_parser_or_filename
 
 
+class AttributeDict(dict):
+    '''
+    Pulled directly from lexicon:
+    https://pypi.python.org/pypi/lexicon
+    https://github.com/bitprophet/lexicon
+    '''
+    def __getattr__(self, key):
+        try:
+            return self[key]
+        except KeyError:
+            # to conform with __getattr__ spec
+            raise AttributeError(key)
+
+    def __setattr__(self, key, value):
+        self[key] = value
+
+    def __delattr__(self, key):
+        del self[key]
+
+    def __getitem__(self, key):
+        '''
+        Not included from lexicon. We want everything returned
+        from an attribute dict to also return an attribute dict
+        if it's a dict
+        '''
+        result = dict.__getitem__(self, key)
+
+        try:
+            return AttributeDict(result)
+        except (TypeError, ValueError):
+            return result
+
+
 class Location(object):
 
     @classmethod
@@ -66,13 +99,19 @@ class ConfigData(object):
             return default
 
     def __getattr__(self, key):
+
         try:
-            return self.value_for_key(key)
+            return self[key]
         except KeyError:
             raise AttributeError(key)
 
     def __getitem__(self, key):
-        return self.value_for_key(key)
+        result = self.value_for_key(key)
+
+        try:
+            return AttributeDict(result)
+        except (TypeError, ValueError):
+            return result
 
     def value_for_key(self, key):
         maps = self.maps

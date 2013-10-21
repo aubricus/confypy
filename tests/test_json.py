@@ -24,6 +24,10 @@ def test_locations_json_first_env():
     assert config.data.Sound == 'Woof'
     assert config.data['foo.bar.baz']['name'] == 'ollie'
 
+    # attribute dict test
+    assert config.data['foo.bar.baz'].name == 'ollie'
+    assert config.data.extra3.foo.bar.baz == 'lucy'
+
 
 def test_locations_json_first_multi():
     os.environ['TEST_SETTINGS'] = './tests/data/settings2.json'
@@ -115,3 +119,6 @@ def test_locations_json_chain_multi():
     # testing extension
     assert config.data.extra1 == 1
     assert config.data.extra2 == 1
+
+    #testing attribute dict
+    assert config.data.extra3.foo.bar.baz == 'lucy'

@@ -3,5 +3,6 @@
     "occupation": "Dog",
     "Sound": "Woof",
     "foo.bar.baz": {"name": "ollie"},
-    "extra1": 1
+    "extra1": 1,
+    "extra3": {"foo": {"bar": {"baz": "lucy"}}}
 }
