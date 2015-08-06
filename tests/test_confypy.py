@@ -114,3 +114,14 @@ def test_locations_dict_chain():
 
     assert config.data.name == 'Lucy'
     assert config.data.nombre == 'Ollie'
+
+
+def test_missing_env_key_with_defaults():
+    defaults = {'ZAF': 'ducks'}
+
+    config = Config(chain=True, defaults=defaults)
+    config.locations = [
+    Location.from_env_keys(['ZAF']),
+    ]
+
+    assert config.data.ZAF == 'ducks'

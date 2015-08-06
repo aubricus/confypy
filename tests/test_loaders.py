@@ -48,7 +48,4 @@ def test_load_env_keys_fail():
 
     data = loaders.load_env_keys(['QUX', 'ZAP', 'QUUX'])
 
-    assert data != {}
-    assert data['QUX'] == None
-    assert data['ZAP'] == None
-    assert data['QUUX'] == None
+    assert data == {}
