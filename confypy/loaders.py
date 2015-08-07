@@ -43,8 +43,10 @@ def load_python(path):
 def load_env_keys(keys):
     data = {}
     for each in keys:
-        data[each] = os.getenv(each, None)
-
+        try:
+            data[each] = os.environ[each]
+        except KeyError:
+            pass
     return data
 
 
