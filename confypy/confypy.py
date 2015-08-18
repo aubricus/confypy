@@ -66,7 +66,7 @@ class Location(object):
             parser = parser_from_parser_or_filename(parser, value[key])
             obj = Location(key, loader=load_env_path, parser=parser)
         except KeyError:
-            obj = {}
+            obj = Location.from_dict({})
 
         return obj
 
