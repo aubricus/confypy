@@ -62,8 +62,12 @@ class Location(object):
     @classmethod
     def from_env_path(cls, key, parser=None):
         value = load_env_keys((key,))
-        parser = parser_from_parser_or_filename(parser, value[key])
-        obj = Location(key, loader=load_env_path, parser=parser)
+        try:
+            parser = parser_from_parser_or_filename(parser, value[key])
+            obj = Location(key, loader=load_env_path, parser=parser)
+        except KeyError:
+            obj = {}
+
         return obj
 
     @classmethod

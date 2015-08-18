@@ -34,8 +34,9 @@ def test_locations_configparser_first_multi():
 
     config = Config()
     config.locations = [
-    Location.from_env_path('TEST_SETTINGS'),
-    Location.from_path('./tests/data/settings1.ini')]
+        Location.from_env_path('TEST_SETTINGS'),
+        Location.from_path('./tests/data/settings1.ini')
+    ]
 
     assert config.data.section3['zap'] == '1'
     assert config.data.section3['qux'] == '2'

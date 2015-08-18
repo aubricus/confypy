@@ -125,3 +125,8 @@ def test_missing_env_key_with_defaults():
     ]
 
     assert config.data.ZAF == 'ducks'
+
+
+def test_missing_env_path():
+    obj = Location.from_env_path('TEST_SETTINGS', parser='yaml')
+    assert obj == {}
